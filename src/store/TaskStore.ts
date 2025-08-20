@@ -14,10 +14,33 @@ export interface Task {
 
 class TaskStore {
 	tasks: Task[] = [];
+	searchFilter: string = "";
 
 	constructor() {
 		makeAutoObservable(this);
 		this.loadFromLocalStorage();
+	}
+
+	get filteredTasks(): Task[] {
+		if (!this.searchFilter.trim()) return this.tasks;
+		const searchValue = this.searchFilter.toLowerCase();
+
+		const filterRecursive = (tasks: Task[]): Task[] => {
+			return tasks
+				.map((task) => {
+					const children = filterRecursive(task.children);
+					if (
+						task.title.toLowerCase().includes(searchValue) ||
+						children.length > 0
+					) {
+						return { ...task, children };
+					}
+					return null;
+				})
+				.filter(Boolean) as Task[];
+		};
+
+		return filterRecursive(this.tasks);
 	}
 
 	addTask(parentId: string | null, title: string, text: string) {

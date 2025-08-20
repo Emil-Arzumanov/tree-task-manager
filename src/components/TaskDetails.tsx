@@ -27,7 +27,7 @@ const TaskDetails = observer(() => {
 
 	const task = taskStore.findTask(id, taskStore.tasks);
 	if (!task) {
-		return <div className="p-4 text-red-500">Задача не найдена</div>;
+		return <div className="p-4">Задача не найдена</div>;
 	}
 
 	return (

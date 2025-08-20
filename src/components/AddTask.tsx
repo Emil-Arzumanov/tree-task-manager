@@ -3,15 +3,17 @@
 import React from "react";
 import { taskStore } from "@/src/store/TaskStore";
 import { observer } from "mobx-react-lite";
+import { Button } from "@radix-ui/themes";
 
 const AddTask = observer(() => {
 	return (
-		<button
-			className="mb-2 p-1 border rounded"
+		<Button
+			color="blue"
+			variant="soft"
 			onClick={() => taskStore.addTask(null, "Новая задача", "")}
 		>
 			Добавить задачу
-		</button>
+		</Button>
 	);
 });
 

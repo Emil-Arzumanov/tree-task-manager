@@ -14,16 +14,23 @@ const TaskManager = observer(() => {
 	}, []);
 
 	return (
-		<>
-			<AddTask />
-			{!isClient ? (
-				<div className="h-screen flex items-center justify-center">
-					Загрузка...
-				</div>
-			) : (
-				<TaskTree tasks={taskStore.tasks} />
-			)}
-		</>
+		<div className="h-full flex flex-col">
+			<div className="p-4 grid grid-rows gap-1">
+				<TaskFilter />
+				<AddTask />
+			</div>
+			<div className="h-full overflow-y-auto">
+				{!isClient ? (
+					<div className="h-full flex items-center justify-center">
+						Загрузка...
+					</div>
+				) : (
+					<div>
+						<TaskTree tasks={taskStore.filteredTasks} />
+					</div>
+				)}
+			</div>
+		</div>
 	);
 });
 
