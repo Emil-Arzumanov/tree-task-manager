@@ -13,6 +13,12 @@ npm run test
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## How it looks
+## How it looks (Inherit/Dark mode)
 
-![Mockup](./public/app_preview.png)
+In "Inherit" mode, the app sets the theme based on the system preference.
+
+![Mockup](./public/app_preview_dark.png)
+
+## How it looks (Light mode)
+
+![Mockup](./public/app_preview_light.png)
