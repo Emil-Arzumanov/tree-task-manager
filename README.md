@@ -1,5 +1,18 @@
 ## How to start
 
+Used stack:
+
+- Typescript
+- React
+- NextJS
+- Turbopack
+- MobX
+- TailwindCSS
+- RadixUI
+- Vitest
+
+## How to start
+
 ```bash
 # To install dependencies
 npm install
