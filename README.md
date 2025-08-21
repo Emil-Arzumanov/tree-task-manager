@@ -1,7 +1,5 @@
 ## How to start
 
-First, run the development server:
-
 ```bash
 # To install dependencies
 npm install
