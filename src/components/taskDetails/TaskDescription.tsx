@@ -31,7 +31,9 @@ const TaskDescription = ({ taskId, taskText, editMode }: Prop) => {
 					onChange={(e) => handleDescriptionChange(e.target.value)}
 				/>
 			) : (
-				<p className="w-full p-2 text-[var(--gray-12)]">{taskText}</p>
+				<div className="w-full p-2 text-[var(--gray-12)] whitespace-pre-wrap">
+					{taskText}
+				</div>
 			)}
 		</div>
 	);
