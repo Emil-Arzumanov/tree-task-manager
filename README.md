@@ -1,18 +1,5 @@
 ## How to start
 
-Used stack:
-
-- Typescript
-- React
-- NextJS
-- Turbopack
-- MobX
-- TailwindCSS
-- RadixUI
-- Vitest
-
-## How to start
-
 ```bash
 # To install dependencies
 npm install
@@ -23,6 +10,17 @@ npm run test
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Used stack
+
+- Typescript
+- React
+- NextJS
+- Turbopack
+- MobX
+- TailwindCSS
+- RadixUI
+- Vitest
 
 ## How it looks (Inherit/Dark mode)
 
