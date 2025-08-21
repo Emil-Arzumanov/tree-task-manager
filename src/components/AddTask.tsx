@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { taskStore } from "@/src/store/TaskStore";
+import { taskStore } from "@store/TaskStore";
 import { observer } from "mobx-react-lite";
 import { Button } from "@radix-ui/themes";
 

@@ -1,5 +1,5 @@
-import TaskDetails from "@/src/components/TaskDetails";
-import TaskManager from "@/src/components/TaskManager";
+import TaskDetails from "@components/taskDetails/TaskDetails";
+import TaskManager from "@components/TaskManager";
 import { Box } from "@radix-ui/themes";
 
 export default function Home() {

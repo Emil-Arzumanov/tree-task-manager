@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import "@/src/styles/globals.css";
+import "@styles/globals.css";
 import "@radix-ui/themes/styles.css";
-import ThemeWrapper from "@/src/components/ThemeWrapper";
+import ThemeWrapper from "@components/ThemeWrapper";
 
 export const metadata: Metadata = {
 	title: "Tree Task Manager App",

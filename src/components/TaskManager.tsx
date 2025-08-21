@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { taskStore } from "@/src/store/TaskStore";
-import { TaskTree } from "@/src/components/TaskTree";
-import AddTask from "@/src/components/AddTask";
+import { taskStore } from "@store/TaskStore";
+import { TaskTree } from "@components/TaskTree";
+import AddTask from "@components/AddTask";
 import { observer } from "mobx-react-lite";
 import TaskFilter from "./TaskFilter";
 import { SegmentedControl, Spinner } from "@radix-ui/themes";
-import { ThemeModeEnum } from "../types/types";
+import { ThemeModeEnum } from "@libs/types";
 
 const TaskManager = observer(() => {
 	const [isClient, setIsClient] = useState(false);

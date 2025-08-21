@@ -1,16 +1,23 @@
 "use client";
 
-import React from "react";
-import { taskStore } from "@/src/store/TaskStore";
+import React, { useState } from "react";
+import { taskStore } from "@store/TaskStore";
 import { TextField } from "@radix-ui/themes";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 const TaskFilter = () => {
+	const [localValue, setLocalValue] = useState(taskStore.searchFilter);
+
+	const handleInputChange = (value: string) => {
+		setLocalValue(value);
+		taskStore.debouncedSetSearch(value);
+	};
+
 	return (
 		<TextField.Root
 			placeholder="Поиск задач..."
-			value={taskStore.searchFilter}
-			onChange={(e) => (taskStore.searchFilter = e.target.value)}
+			value={localValue}
+			onChange={(e) => handleInputChange(e.target.value)}
 		>
 			<TextField.Slot>
 				<MagnifyingGlassIcon height="16" width="16" />

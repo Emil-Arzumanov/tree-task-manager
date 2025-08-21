@@ -1,17 +1,10 @@
 "use client";
 
 import { makeAutoObservable } from "mobx";
-import { ThemeModeEnum } from "@/src/types/types";
+import { Task, ThemeModeEnum } from "@libs/types";
+import { debounce } from "@utils/basicUtils";
 
-export interface Task {
-	id: string;
-	title: string;
-	text: string;
-	completed: boolean;
-	collapsed: boolean;
-	children: Task[];
-	parentId?: string | null;
-}
+const DEBOUNCE_DELAY = 500;
 
 class TaskStore {
 	tasks: Task[] = [];
@@ -22,6 +15,10 @@ class TaskStore {
 		makeAutoObservable(this);
 		this.loadFromLocalStorage();
 	}
+
+	debouncedSetSearch = debounce((filter: string) => {
+		this.searchFilter = filter;
+	}, DEBOUNCE_DELAY);
 
 	toggleDarkMode(themeMode: ThemeModeEnum) {
 		this.themeMode = themeMode;
@@ -127,6 +124,10 @@ class TaskStore {
 			this.saveToLocalStorage();
 		}
 	}
+
+	debouncedEditTask = debounce((id: string, title?: string, text?: string) => {
+		this.editTask(id, title, text);
+	}, DEBOUNCE_DELAY);
 
 	findTask(id: string, tasks: Task[]): Task | null {
 		for (const task of tasks) {

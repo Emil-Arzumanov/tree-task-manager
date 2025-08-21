@@ -1,10 +1,11 @@
 "use client";
 
 import { observer } from "mobx-react-lite";
-import { taskStore, Task } from "@/src/store/TaskStore";
+import { taskStore } from "@store/TaskStore";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Button, Checkbox, ChevronDownIcon } from "@radix-ui/themes";
 import { PlusIcon, Cross1Icon, ChevronRightIcon } from "@radix-ui/react-icons";
+import { Task } from "@libs/types";
 
 interface Props {
 	tasks: Task[];
