@@ -8,6 +8,10 @@ import { Button, Spinner } from "@radix-ui/themes";
 import TaskDescription from "./TaskDescription";
 import TaskTitle from "./TaskTitle";
 
+/**
+ * Компонент деталей задачи - отображает полную информацию о задаче
+ * и предоставляет возможность редактирования
+ */
 const TaskDetails = observer(() => {
 	const [isClient, setIsClient] = useState(false);
 	useEffect(() => {
@@ -17,6 +21,7 @@ const TaskDetails = observer(() => {
 
 	const [editMode, setEditMode] = useState(false);
 
+	// Ожидаем завершения hydration перед рендерингом
 	if (!isClient) {
 		return (
 			<div className="h-screen flex items-center justify-center">

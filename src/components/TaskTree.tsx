@@ -11,10 +11,14 @@ interface Props {
 	tasks: Task[];
 }
 
+/**
+ * Рекурсивный компонент дерева задач - отображает иерархическую структуру задач
+ * с возможностью раскрытия/сворачивания, отметки выполнения и управления задачами
+ */
 export const TaskTree = observer(({ tasks }: Props) => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
-	const selectedId = searchParams.get("id");
+	const selectedId = searchParams.get("id"); // ID выбранной задачи из URL
 
 	return (
 		<ul>
@@ -29,8 +33,10 @@ export const TaskTree = observer(({ tasks }: Props) => {
 						router.push(`/?id=${task.id}`);
 					}}
 				>
+					{/* Основная строка задачи */}
 					<div className="flex items-center justify-between gap-2">
 						<div className="grid grid-cols-[auto_auto_1fr_auto] items-center gap-2 w-full">
+							{/* Кнопка раскрытия/сворачивания дочерних задач */}
 							{task.children.length ? (
 								<button
 									className="w-5 h-5 flex items-center justify-center"
@@ -48,6 +54,8 @@ export const TaskTree = observer(({ tasks }: Props) => {
 							) : (
 								""
 							)}
+
+							{/* Чекбокс выполнения задачи */}
 							<Checkbox
 								color="blue"
 								variant="soft"
@@ -55,9 +63,14 @@ export const TaskTree = observer(({ tasks }: Props) => {
 								onCheckedChange={() => taskStore.toggleTask(task.id)}
 								onClick={(event) => event.stopPropagation()}
 							/>
+
+							{/* Заголовок задачи */}
 							<span className="truncate min-w-0">{task.title}</span>
 						</div>
+
+						{/* Кнопки управления задачей */}
 						<div className="flex items-center gap-2">
+							{/* Кнопка добавления подзадачи */}
 							<Button
 								color="blue"
 								variant="soft"
@@ -68,6 +81,8 @@ export const TaskTree = observer(({ tasks }: Props) => {
 							>
 								<PlusIcon className="w-4 h-4"></PlusIcon>
 							</Button>
+
+							{/* Кнопка удаления задачи */}
 							<Button
 								color="red"
 								variant="soft"
@@ -80,6 +95,8 @@ export const TaskTree = observer(({ tasks }: Props) => {
 							</Button>
 						</div>
 					</div>
+
+					{/* Рекурсивное отображение дочерних задач если они не свернуты */}
 					{!task.collapsed && task.children.length > 0 && (
 						<TaskTree tasks={task.children} />
 					)}

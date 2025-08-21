@@ -11,6 +11,10 @@ interface Prop {
 	children: React.ReactNode;
 }
 
+/**
+ * Компонент-обертка для управления темой приложения
+ * Определяет текущую тему на основе пользовательских настроек и системных предпочтений
+ */
 const ThemeWrapper = observer(({ children }: Prop) => {
 	const isDarkMode = useDarkMode();
 	const [isClient, setIsClient] = useState(false);
@@ -18,6 +22,7 @@ const ThemeWrapper = observer(({ children }: Prop) => {
 		setIsClient(true);
 	}, []);
 
+	// Ожидаем завершения hydration перед рендерингом
 	if (!isClient) {
 		return (
 			<div className="h-screen flex items-center justify-center">
@@ -27,11 +32,15 @@ const ThemeWrapper = observer(({ children }: Prop) => {
 	}
 
 	let theme: ThemeModeEnum = taskStore.themeMode;
+
+	// Логика наследования темы от системы
 	if (taskStore.themeMode === ThemeModeEnum.inherit && isDarkMode) {
-		theme = ThemeModeEnum.dark;
+		theme = ThemeModeEnum.dark; // Системная темная тема
 	} else if (taskStore.themeMode === ThemeModeEnum.inherit) {
-		theme = ThemeModeEnum.light;
+		theme = ThemeModeEnum.light; // Системная светлая тема
 	}
+
+	// Применяем выбранную тему через Radix UI Theme провайдер
 	return <Theme appearance={theme}>{children}</Theme>;
 });
 

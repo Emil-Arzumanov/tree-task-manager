@@ -9,16 +9,30 @@ import TaskFilter from "./TaskFilter";
 import { SegmentedControl, Spinner } from "@radix-ui/themes";
 import { ThemeModeEnum } from "@libs/types";
 
+/**
+ * Основной компонент менеджера задач - содержит фильтр, добавление задач,
+ * переключение темы и дерево задач
+ */
 const TaskManager = observer(() => {
 	const [isClient, setIsClient] = useState(false);
 	useEffect(() => {
 		setIsClient(true);
 	}, []);
 
+	// Ожидаем завершения hydration перед рендерингом
+	if (!isClient) {
+		return (
+			<div className="h-screen flex items-center justify-center">
+				<Spinner size="3" />
+			</div>
+		);
+	}
+
 	return (
 		<div className="h-full flex flex-col">
 			<div className="p-4 grid grid-rows gap-1">
 				<TaskFilter />
+
 				<div className="flex justify-between">
 					<AddTask />
 					<SegmentedControl.Root
@@ -41,16 +55,11 @@ const TaskManager = observer(() => {
 					</SegmentedControl.Root>
 				</div>
 			</div>
+
 			<div className="h-full overflow-y-auto scrollbar-custom scrollbar-custom-light">
-				{!isClient ? (
-					<div className="h-full flex items-center justify-center">
-						<Spinner size="3" />
-					</div>
-				) : (
-					<div>
-						<TaskTree tasks={taskStore.filteredTasks} />
-					</div>
-				)}
+				<div>
+					<TaskTree tasks={taskStore.filteredTasks} />
+				</div>
 			</div>
 		</div>
 	);

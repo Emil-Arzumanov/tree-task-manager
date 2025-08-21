@@ -8,6 +8,10 @@ interface Prop {
 	editMode: boolean;
 }
 
+/**
+ * Компонент для отображения и редактирования описания задачи
+ * Поддерживает два режима: просмотр и редактирование
+ */
 const TaskDescription = ({ taskId, taskText, editMode }: Prop) => {
 	const [localDescription, setLocalDescription] = useState(taskText);
 	const handleDescriptionChange = (value: string) => {

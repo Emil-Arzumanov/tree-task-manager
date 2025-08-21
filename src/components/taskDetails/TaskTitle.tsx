@@ -8,6 +8,10 @@ interface Prop {
 	editMode: boolean;
 }
 
+/**
+ * Компонент для отображения и редактирования заголовка задачи
+ * Поддерживает два режима: просмотр и редактирование
+ */
 const TaskTitle = ({ taskId, taskTitle, editMode }: Prop) => {
 	const [localTitle, setLocalTitle] = useState(taskTitle);
 	const handleTitleChange = (value: string) => {
