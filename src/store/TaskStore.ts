@@ -1,6 +1,7 @@
 "use client";
 
 import { makeAutoObservable } from "mobx";
+import { ThemeModeEnum } from "@/src/types/types";
 
 export interface Task {
 	id: string;
@@ -15,10 +16,15 @@ export interface Task {
 class TaskStore {
 	tasks: Task[] = [];
 	searchFilter: string = "";
+	themeMode: ThemeModeEnum = ThemeModeEnum.inherit;
 
 	constructor() {
 		makeAutoObservable(this);
 		this.loadFromLocalStorage();
+	}
+
+	toggleDarkMode(themeMode: ThemeModeEnum) {
+		this.themeMode = themeMode;
 	}
 
 	get filteredTasks(): Task[] {

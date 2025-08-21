@@ -20,9 +20,9 @@ export const TaskTree = observer(({ tasks }: Props) => {
 			{tasks.map((task) => (
 				<li
 					key={task.id}
-					className={`my-1 cursor-pointer border rounded-md p-2 border-blue-300 shadow-sm ${
-						selectedId === task.id ? "bg-blue-50" : "bg-white"
-					}`}
+					className={`my-1 cursor-pointer border rounded-md p-2 shadow-sm ${
+						selectedId === task.id ? "bg-[var(--blue-4)]" : "bg-[var(--gray-1)]"
+					} border-[var(--blue-7)]`}
 					onClick={(event) => {
 						event.stopPropagation();
 						router.push(`/?id=${task.id}`);

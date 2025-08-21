@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "@/src/styles/globals.css";
 import "@radix-ui/themes/styles.css";
-import { Theme } from "@radix-ui/themes";
+import ThemeWrapper from "@/src/components/ThemeWrapper";
 
 export const metadata: Metadata = {
 	title: "Tree Task Manager App",
@@ -16,7 +16,7 @@ export default function RootLayout({
 	return (
 		<html lang="ru">
 			<body className="antialiased">
-				<Theme>{children}</Theme>
+				<ThemeWrapper>{children}</ThemeWrapper>
 			</body>
 		</html>
 	);

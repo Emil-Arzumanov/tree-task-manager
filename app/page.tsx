@@ -1,5 +1,6 @@
 import TaskDetails from "@/src/components/TaskDetails";
 import TaskManager from "@/src/components/TaskManager";
+import { Box } from "@radix-ui/themes";
 
 export default function Home() {
 	return (
@@ -7,9 +8,12 @@ export default function Home() {
 			<div className="p-2 h-screen">
 				<TaskManager />
 			</div>
-			<div className="p-2 flex items-center justify-center bg-neutral-300 h-screen">
+			<Box
+				style={{ background: "var(--gray-a6)" }}
+				className="p-2 bg-neutral-300 h-screen"
+			>
 				<TaskDetails />
-			</div>
+			</Box>
 		</div>
 	);
 }
