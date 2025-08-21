@@ -11,6 +11,12 @@ npm run test
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## GitHub pages
+
+[Repository with deployment project](https://github.com/Emil-Arzumanov/tree-task-manager-deployment/tree/for_github_pages)
+
+[App on GitHubPages](https://emil-arzumanov.github.io/tree-task-manager-deployment/)
+
 ## Used stack
 
 - Typescript

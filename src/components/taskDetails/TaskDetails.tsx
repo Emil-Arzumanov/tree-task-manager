@@ -27,12 +27,20 @@ const TaskDetails = observer(() => {
 
 	const id = searchParams.get("id");
 	if (!id) {
-		return <div className="p-4">Выберите задачу</div>;
+		return (
+			<div className="h-full flex items-center justify-center">
+				Выберите задачу
+			</div>
+		);
 	}
 
 	const task = taskStore.findTask(id, taskStore.tasks);
 	if (!task) {
-		return <div className="p-4">Задача не найдена</div>;
+		return (
+			<div className="h-full flex items-center justify-center">
+				Задача не найдена
+			</div>
+		);
 	}
 
 	return (
